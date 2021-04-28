@@ -34,21 +34,22 @@ namespace AndroidController
             this.label1 = new System.Windows.Forms.Label();
             this.cmbDevice = new System.Windows.Forms.ComboBox();
             this.tblOptions = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numResulution = new System.Windows.Forms.NumericUpDown();
+            this.numFps = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.numBitrate = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.chkTurnScreen = new System.Windows.Forms.CheckBox();
             this.chkWake = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numFps = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numResulution = new System.Windows.Forms.NumericUpDown();
+            this.chkOpenGL = new System.Windows.Forms.CheckBox();
             this.tblOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numBitrate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numResulution)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFps)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBitrate)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -100,13 +101,65 @@ namespace AndroidController
             this.tblOptions.Controls.Add(this.label2);
             this.tblOptions.Controls.Add(this.btnStart);
             this.tblOptions.Controls.Add(this.chkTurnScreen);
+            this.tblOptions.Controls.Add(this.chkOpenGL);
             this.tblOptions.Controls.Add(this.chkWake);
             this.tblOptions.Location = new System.Drawing.Point(14, 32);
             this.tblOptions.Name = "tblOptions";
-            this.tblOptions.Size = new System.Drawing.Size(322, 169);
+            this.tblOptions.Size = new System.Drawing.Size(322, 183);
             this.tblOptions.TabIndex = 9;
             this.tblOptions.TabStop = false;
             this.tblOptions.Text = "Options";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(221, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 12);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "-1 for default.";
+            // 
+            // numResulution
+            // 
+            this.numResulution.Location = new System.Drawing.Point(227, 72);
+            this.numResulution.Maximum = new decimal(new int[] {
+            7680,
+            0,
+            0,
+            0});
+            this.numResulution.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numResulution.Name = "numResulution";
+            this.numResulution.Size = new System.Drawing.Size(89, 21);
+            this.numResulution.TabIndex = 12;
+            // 
+            // numFps
+            // 
+            this.numFps.Location = new System.Drawing.Point(51, 72);
+            this.numFps.Maximum = new decimal(new int[] {
+            320,
+            0,
+            0,
+            0});
+            this.numFps.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numFps.Name = "numFps";
+            this.numFps.Size = new System.Drawing.Size(86, 21);
+            this.numFps.TabIndex = 12;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(6, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(310, 21);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Recommand 8Mbps for WLAN or 128Mbps for USB";
             // 
             // numBitrate
             // 
@@ -125,6 +178,24 @@ namespace AndroidController
             this.numBitrate.Size = new System.Drawing.Size(111, 21);
             this.numBitrate.TabIndex = 12;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(144, 76);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 12);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Screen width";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 76);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 12);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "FPS";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -136,7 +207,7 @@ namespace AndroidController
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(6, 126);
+            this.btnStart.Location = new System.Drawing.Point(6, 141);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(310, 36);
             this.btnStart.TabIndex = 10;
@@ -164,80 +235,21 @@ namespace AndroidController
             this.chkWake.Text = "Keep device wake";
             this.chkWake.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // chkOpenGL
             // 
-            this.label3.Location = new System.Drawing.Point(6, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(310, 21);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Recommand 8Mbps for WLAN or 128Mbps for USB";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 76);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 12);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "FPS";
-            // 
-            // numFps
-            // 
-            this.numFps.Location = new System.Drawing.Point(51, 72);
-            this.numFps.Maximum = new decimal(new int[] {
-            320,
-            0,
-            0,
-            0});
-            this.numFps.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numFps.Name = "numFps";
-            this.numFps.Size = new System.Drawing.Size(86, 21);
-            this.numFps.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(221, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 12);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "-1 for default.";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(144, 76);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 12);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Screen width";
-            // 
-            // numResulution
-            // 
-            this.numResulution.Location = new System.Drawing.Point(227, 72);
-            this.numResulution.Maximum = new decimal(new int[] {
-            7680,
-            0,
-            0,
-            0});
-            this.numResulution.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numResulution.Name = "numResulution";
-            this.numResulution.Size = new System.Drawing.Size(89, 21);
-            this.numResulution.TabIndex = 12;
+            this.chkOpenGL.AutoSize = true;
+            this.chkOpenGL.Location = new System.Drawing.Point(17, 122);
+            this.chkOpenGL.Name = "chkOpenGL";
+            this.chkOpenGL.Size = new System.Drawing.Size(240, 16);
+            this.chkOpenGL.TabIndex = 0;
+            this.chkOpenGL.Text = "Use OpenGL (may improve performance)";
+            this.chkOpenGL.UseVisualStyleBackColor = true;
             // 
             // FrmChooseDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 212);
+            this.ClientSize = new System.Drawing.Size(348, 227);
             this.Controls.Add(this.tblOptions);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRefresh);
@@ -253,9 +265,9 @@ namespace AndroidController
             this.Load += new System.EventHandler(this.FrmChooseDevice_Load);
             this.tblOptions.ResumeLayout(false);
             this.tblOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numBitrate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFps)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numResulution)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFps)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBitrate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,5 +291,6 @@ namespace AndroidController
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numResulution;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox chkOpenGL;
     }
 }

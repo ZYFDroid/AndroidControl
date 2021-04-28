@@ -34,6 +34,7 @@ namespace AndroidController
             numFps.Value = Program.Settings.SCFps;
             chkTurnScreen.Checked = Program.Settings.SCCloseScreen;
             chkWake.Checked = Program.Settings.SCKeepWake;
+            chkOpenGL.Checked = Program.Settings.SCUseOpenGL;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace AndroidController
              Program.Settings.SCFps= (int)numFps.Value ;
             Program.Settings.SCCloseScreen= chkTurnScreen.Checked ;
              Program.Settings.SCKeepWake= chkWake.Checked ;
-
+            Program.Settings.SCUseOpenGL = chkOpenGL.Checked;
             Close();
             parent.BeginInvoke(new Action(() => {
                 parent.startScrcpy(device.DeviceSeries);

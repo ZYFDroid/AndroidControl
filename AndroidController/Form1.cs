@@ -55,6 +55,8 @@ namespace AndroidController
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Width = Program.Settings.APPWindowWidth;
+            this.Height = Program.Settings.APPWindowHeight;
             this.Icon = Properties.Resources.phone;
         }
 
@@ -73,7 +75,7 @@ namespace AndroidController
 
         string DefaultScrcpyArgs  { 
             get {
-                String args = "--window-title " + Program.defaultWindowName + " --rotation 0 --forward-all-clicks --shortcut-mod=lctrl+lsuper ";
+                String args = "--window-title " + Program.defaultWindowName + " --rotation 0 --forward-all-clicks --shortcut-mod=lalt+lsuper ";
                 if (Program.Settings.SCCloseScreen) {args += "-S ";}
                 if (Program.Settings.SCKeepWake) { args += "-w "; }
                 if (Program.Settings.SCMbps > 0)
@@ -89,6 +91,9 @@ namespace AndroidController
                 if (Program.Settings.SCResolution > 0)
                 {
                     args += "--max-size " + Program.Settings.SCResolution + " ";
+                }
+                if (Program.Settings.SCUseOpenGL) {
+                    args += "--render-driver=opengl ";
                 }
                 return args;
             } 
@@ -141,7 +146,7 @@ namespace AndroidController
                 while (hwndScrcpy == IntPtr.Zero)
                 {
                     hwndScrcpy = FindWindow(null, Program.defaultWindowName);
-                    Thread.Sleep(2);
+                    Thread.Sleep(100);
                     if (prcScrcpy.HasExited)
                     {
                         x.ReportProgress(100, "Connection Failed. Press [Cancel] to close.");
@@ -157,18 +162,26 @@ namespace AndroidController
                
                 Invoke(new Action(() =>
                 {
-                    lblPlaceholder.Visible = false;
-                    SetWindowLong(hwndScrcpy, GWL_STYLE, WS_VISIBLE | WS_CLIPCHILDREN);
-                    int temp = GetWindowLong(panMain.Handle, GWL_EXSTYLE);
-                    temp = temp & (~WS_EX_CONTROLPARENT);
-                    SetWindowLong(panMain.Handle, GWL_EXSTYLE, temp);
+                    bool noWindowLeft = false;
+                    while (!noWindowLeft)
+                    {
+                        lblPlaceholder.Visible = false;
+                        SetWindowLong(hwndScrcpy, GWL_STYLE, WS_VISIBLE | WS_CLIPCHILDREN);
+                        int temp = GetWindowLong(panMain.Handle, GWL_EXSTYLE);
+                        temp = temp & (~WS_EX_CONTROLPARENT);
+                        SetWindowLong(panMain.Handle, GWL_EXSTYLE, temp);
 
-                    temp = GetWindowLong(this.Handle, GWL_EXSTYLE);
-                    temp = temp & (~WS_EX_CONTROLPARENT);
-                    SetWindowLong(this.Handle, GWL_EXSTYLE, temp);
+                        SetParent(hwndScrcpy, panMain.Handle);
+                        SetWindowPos(hwndScrcpy, 0, 0, 0, panMain.Width - 5, panMain.Height - 5, SWP_SHOWWINDOW | SWP_FRAMECHANGED);
 
-                    SetParent(hwndScrcpy, panMain.Handle);
-                    SetWindowPos(hwndScrcpy, 0, 0, 0, panMain.Width-5, panMain.Height-5, SWP_SHOWWINDOW | SWP_FRAMECHANGED);
+                        if (FindWindow(null, Program.defaultWindowName) != IntPtr.Zero)
+                        {
+                            hwndScrcpy = FindWindow(null, Program.defaultWindowName);
+                        }
+                        else {
+                            noWindowLeft = true;
+                        }
+                    }
                 }));
                 Thread.Sleep(333);
             }).Run(this);
@@ -237,11 +250,20 @@ namespace AndroidController
             {
                 stopScrcpy();
             }
+
+            Program.Settings.APPWindowWidth= this.Width ;
+             Program.Settings.APPWindowHeight= this.Height ;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             Program.AdbClient.runDeviceCommand(device, "shell input keyevent " + e.Argument.ToString());
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            TopMost = true;
+            TopMost = false;
         }
     }
 }

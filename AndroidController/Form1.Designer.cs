@@ -33,8 +33,8 @@ namespace AndroidController
             this.panBottom = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.btnSetting = new System.Windows.Forms.Button();
             this.btnSound = new System.Windows.Forms.Button();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.btnTask = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -103,22 +103,6 @@ namespace AndroidController
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // btnSetting
-            // 
-            this.btnSetting.BackgroundImage = global::AndroidController.Properties.Resources.BtnSetting;
-            this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSetting.FlatAppearance.BorderSize = 0;
-            this.btnSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.btnSetting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.Location = new System.Drawing.Point(293, 3);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(52, 42);
-            this.btnSetting.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.btnSetting, "Settings");
-            this.btnSetting.UseVisualStyleBackColor = true;
-            // 
             // btnSound
             // 
             this.btnSound.BackgroundImage = global::AndroidController.Properties.Resources.sound;
@@ -128,13 +112,29 @@ namespace AndroidController
             this.btnSound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnSound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSound.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSound.Location = new System.Drawing.Point(235, 3);
+            this.btnSound.Location = new System.Drawing.Point(293, 3);
             this.btnSound.Name = "btnSound";
             this.btnSound.Size = new System.Drawing.Size(52, 42);
             this.btnSound.TabIndex = 4;
             this.toolTip1.SetToolTip(this.btnSound, "Cast Android Sounds");
             this.btnSound.UseVisualStyleBackColor = true;
             this.btnSound.Click += new System.EventHandler(this.btnSound_Click);
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.BackgroundImage = global::AndroidController.Properties.Resources.BtnSetting;
+            this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSetting.FlatAppearance.BorderSize = 0;
+            this.btnSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnSetting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetting.Location = new System.Drawing.Point(235, 3);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(52, 42);
+            this.btnSetting.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.btnSetting, "Settings");
+            this.btnSetting.UseVisualStyleBackColor = true;
             // 
             // btnMenu
             // 
@@ -268,6 +268,7 @@ namespace AndroidController
             this.Controls.Add(this.panBottom);
             this.Name = "Form1";
             this.Text = "Android Control - Powered by scrcpy, sndcpy, VideoLAN, etc.";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panBottom.ResumeLayout(false);

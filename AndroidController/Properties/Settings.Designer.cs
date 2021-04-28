@@ -106,5 +106,41 @@ namespace AndroidController.Properties {
                 this["SCFps"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("540")]
+        public int APPWindowWidth {
+            get {
+                return ((int)(this["APPWindowWidth"]));
+            }
+            set {
+                this["APPWindowWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("960")]
+        public int APPWindowHeight {
+            get {
+                return ((int)(this["APPWindowHeight"]));
+            }
+            set {
+                this["APPWindowHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SCUseOpenGL {
+            get {
+                return ((bool)(this["SCUseOpenGL"]));
+            }
+            set {
+                this["SCUseOpenGL"] = value;
+            }
+        }
     }
 }
