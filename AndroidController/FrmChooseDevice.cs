@@ -35,6 +35,7 @@ namespace AndroidController
             chkTurnScreen.Checked = Program.Settings.SCCloseScreen;
             chkWake.Checked = Program.Settings.SCKeepWake;
             chkOpenGL.Checked = Program.Settings.SCUseOpenGL;
+            chkSkipFrame.Checked = Program.Settings.SCSkipFrames;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -48,10 +49,27 @@ namespace AndroidController
             Program.Settings.SCCloseScreen= chkTurnScreen.Checked ;
              Program.Settings.SCKeepWake= chkWake.Checked ;
             Program.Settings.SCUseOpenGL = chkOpenGL.Checked;
+            Program.Settings.SCSkipFrames = chkSkipFrame.Checked;
             Close();
             parent.BeginInvoke(new Action(() => {
                 parent.startScrcpy(device.DeviceSeries);
             }));
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            FrmConnectDevice f = new FrmConnectDevice();
+            f.StartPosition = FormStartPosition.Manual;
+            f.Top = this.Top + this.Height / 2 - f.Height / 2;
+            f.Left = this.Left + this.Width / 2 - f.Width / 2;
+            f.Show(this);
+            f.FormClosed += F_FormClosed;
+        }
+
+        private void F_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cmbDevice.setDict(Program.AdbClient.getDeviceList().ToDictionary(d => $"{d.TransportId}:{d.Model}({d.DeviceSeries})"));
+            tblOptions.Enabled = cmbDevice.Enabled;
         }
     }
 }

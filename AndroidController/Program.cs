@@ -123,7 +123,7 @@ namespace AndroidController
         public string Product = "Android Device";
         public string Model = "Android Device";
         public string Device = "Android Device";
-        public string TransportId = "0";
+        public string TransportId = "-1";
         public DeviceInfo(string deviceName, string deviceSeries)
         {
             DeviceData = deviceName;

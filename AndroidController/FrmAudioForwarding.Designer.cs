@@ -32,6 +32,8 @@ namespace AndroidController
             this.cmbDevice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panFunctions = new System.Windows.Forms.GroupBox();
+            this.numBufferSize = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,8 +44,6 @@ namespace AndroidController
             this.btnForwarding = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numBufferSize = new System.Windows.Forms.NumericUpDown();
             this.panFunctions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numBufferSize)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +84,33 @@ namespace AndroidController
             this.panFunctions.TabIndex = 2;
             this.panFunctions.TabStop = false;
             this.panFunctions.Text = "Actions";
+            // 
+            // numBufferSize
+            // 
+            this.numBufferSize.Location = new System.Drawing.Point(89, 124);
+            this.numBufferSize.Maximum = new decimal(new int[] {
+            128,
+            0,
+            0,
+            0});
+            this.numBufferSize.Name = "numBufferSize";
+            this.numBufferSize.Size = new System.Drawing.Size(229, 21);
+            this.numBufferSize.TabIndex = 7;
+            this.numBufferSize.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numBufferSize.ValueChanged += new System.EventHandler(this.numBufferSize_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 127);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 12);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Buffer Size:";
             // 
             // label3
             // 
@@ -179,38 +206,13 @@ namespace AndroidController
             this.btnConnect.TabIndex = 4;
             this.btnConnect.Text = "+";
             this.btnConnect.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 127);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 12);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Buffer Size:";
-            // 
-            // numBufferSize
-            // 
-            this.numBufferSize.Location = new System.Drawing.Point(89, 124);
-            this.numBufferSize.Maximum = new decimal(new int[] {
-            128,
-            0,
-            0,
-            0});
-            this.numBufferSize.Name = "numBufferSize";
-            this.numBufferSize.Size = new System.Drawing.Size(229, 21);
-            this.numBufferSize.TabIndex = 7;
-            this.numBufferSize.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numBufferSize.ValueChanged += new System.EventHandler(this.numBufferSize_ValueChanged);
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // FrmAudioForwarding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(350, 281);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRefresh);

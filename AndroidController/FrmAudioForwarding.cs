@@ -74,6 +74,16 @@ namespace AndroidController
             DeviceInfo dev = cmbDevice.SelectedValue as DeviceInfo;
             ProgressDialog.Schedule(x =>
             {
+                Process.GetProcessesByName("vlc_sndcpy").ToList().ForEach(f => {
+                    try
+                    {
+                        f.Kill();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                });
                 x.ReportProgress(0, "Connecting to device... ");
                 Program.AdbClient.runDeviceCommand(dev, $"forward tcp:{Program.Settings.SCSndPort} localabstract:sndcpy");
                 System.Threading.Thread.Sleep(1000);
@@ -82,8 +92,8 @@ namespace AndroidController
                 psi.CreateNoWindow = true;
                 x.ReportProgress(0, "Starting VLC player... ");
                 Process ps = Process.Start(psi);
-                System.Threading.Thread.Sleep(2000);
-                for (int i = 0; i <= 5; i++)
+                System.Threading.Thread.Sleep(1000);
+                for (int i = 1; i <= 8; i++)
                 {
                     x.ReportProgress(0, "Checking connectivity... "+i);
                     System.Threading.Thread.Sleep(1000);
@@ -95,6 +105,9 @@ namespace AndroidController
                         }
                         return;
                     }
+                    if (x.CancellationPending) {
+                        return;
+                    }
                 }
 
             }).Run(this);
@@ -103,6 +116,22 @@ namespace AndroidController
         private void numBufferSize_ValueChanged(object sender, EventArgs e)
         {
             Program.Settings.SCSndBuffer = (int)numBufferSize.Value;
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            FrmConnectDevice f = new FrmConnectDevice();
+            f.StartPosition = FormStartPosition.Manual;
+            f.Top = this.Top + this.Height / 2 - f.Height / 2;
+            f.Left = this.Left + this.Width / 2 - f.Width / 2;
+            f.Show(this);
+            f.FormClosed += F_FormClosed;
+        }
+
+        private void F_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cmbDevice.setDict(Program.AdbClient.getDeviceList().ToDictionary(d => $"{d.TransportId}:{d.Model}({d.DeviceSeries})"));
+            panFunctions.Enabled = cmbDevice.Enabled;
         }
     }
 }

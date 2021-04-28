@@ -38,7 +38,7 @@ namespace AndroidController
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(9, 49);
+            this.progressBar1.Location = new System.Drawing.Point(9, 54);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(359, 31);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -62,7 +62,7 @@ namespace AndroidController
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(374, 49);
+            this.button1.Location = new System.Drawing.Point(374, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 31);
             this.button1.TabIndex = 2;
@@ -81,14 +81,16 @@ namespace AndroidController
             // 
             // ProgressDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 92);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(469, 96);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.progressBar1);
+            this.MaximumSize = new System.Drawing.Size(485, 135);
+            this.MinimumSize = new System.Drawing.Size(485, 135);
             this.Name = "ProgressDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

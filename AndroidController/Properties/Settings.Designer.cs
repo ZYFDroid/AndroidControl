@@ -142,5 +142,41 @@ namespace AndroidController.Properties {
                 this["SCUseOpenGL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SCSkipFrames {
+            get {
+                return ((bool)(this["SCSkipFrames"]));
+            }
+            set {
+                this["SCSkipFrames"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int APPWindowX {
+            get {
+                return ((int)(this["APPWindowX"]));
+            }
+            set {
+                this["APPWindowX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int APPWindowY {
+            get {
+                return ((int)(this["APPWindowY"]));
+            }
+            set {
+                this["APPWindowY"] = value;
+            }
+        }
     }
 }

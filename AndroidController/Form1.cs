@@ -57,6 +57,11 @@ namespace AndroidController
         {
             this.Width = Program.Settings.APPWindowWidth;
             this.Height = Program.Settings.APPWindowHeight;
+            this.Top = Program.Settings.APPWindowY;
+            this.Left = Program.Settings.APPWindowX;
+            Program.Settings.APPWindowY=0;
+            Program.Settings.APPWindowX=0;
+            Program.Settings.Save();
             this.Icon = Properties.Resources.phone;
         }
 
@@ -75,7 +80,8 @@ namespace AndroidController
 
         string DefaultScrcpyArgs  { 
             get {
-                String args = "--window-title " + Program.defaultWindowName + " --rotation 0 --forward-all-clicks --shortcut-mod=lalt+lsuper ";
+                String args = " --window-title " + Program.defaultWindowName + " --rotation 0 --forward-all-clicks --shortcut-mod=lalt+lsuper ";
+                args += $"--window-x 0 --window-y 0 --window-width 30 --window-height 30 ";
                 if (Program.Settings.SCCloseScreen) {args += "-S ";}
                 if (Program.Settings.SCKeepWake) { args += "-w "; }
                 if (Program.Settings.SCMbps > 0)
@@ -94,6 +100,9 @@ namespace AndroidController
                 }
                 if (Program.Settings.SCUseOpenGL) {
                     args += "--render-driver=opengl ";
+                }
+                if (!Program.Settings.SCSkipFrames) {
+                    args += "--render-expired-frames ";
                 }
                 return args;
             } 
@@ -159,7 +168,8 @@ namespace AndroidController
                         return;
                     }
                 }
-               
+
+                Thread.Sleep(333);
                 Invoke(new Action(() =>
                 {
                     bool noWindowLeft = false;
@@ -208,6 +218,9 @@ namespace AndroidController
             {
                 SetWindowPos(hwndScrcpy, 0, 0, 0, panMain.Width, panMain.Height, SWP_SHOWWINDOW | SWP_FRAMECHANGED | SWP_NOACTIVATE);
             }
+            if (e.Data !=null && e.Data.Contains("Device disconnected")) {
+                Invoke(new Action(stopScrcpy));
+            }
         }
 
         private void panMain_SizeChanged(object sender, EventArgs e)
@@ -253,6 +266,8 @@ namespace AndroidController
 
             Program.Settings.APPWindowWidth= this.Width ;
              Program.Settings.APPWindowHeight= this.Height ;
+             Program.Settings.APPWindowX= this.Left;
+             Program.Settings.APPWindowY= this.Top;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -264,6 +279,11 @@ namespace AndroidController
         {
             TopMost = true;
             TopMost = false;
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            showInCenter(new FrmConfig());
         }
     }
 }

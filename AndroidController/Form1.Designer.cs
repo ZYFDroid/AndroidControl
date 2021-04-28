@@ -135,6 +135,7 @@ namespace AndroidController
             this.btnSetting.TabIndex = 5;
             this.toolTip1.SetToolTip(this.btnSetting, "Settings");
             this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // btnMenu
             // 

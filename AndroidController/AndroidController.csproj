@@ -141,6 +141,18 @@
     <Compile Include="FrmChooseDevice.Designer.cs">
       <DependentUpon>FrmChooseDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfig.Designer.cs">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConnectDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConnectDevice.Designer.cs">
+      <DependentUpon>FrmConnectDevice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgressDialog.cs">
       <SubType>Form</SubType>
@@ -157,6 +169,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChooseDevice.resx">
       <DependentUpon>FrmChooseDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfig.resx">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConnectDevice.resx">
+      <DependentUpon>FrmConnectDevice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgressDialog.resx">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
@@ -205,6 +223,11 @@
     <None Include="Resources\mute.png" />
     <None Include="Resources\btn_add.png" />
     <None Include="Resources\btn_close.png" />
+    <None Include="Resources\ok.png" />
+    <None Include="Resources\fail.png" />
+    <None Include="Resources\connect.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\phone 1.png" />
     <Content Include="tools\vlc_sndcpy.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

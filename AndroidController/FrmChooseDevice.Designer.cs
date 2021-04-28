@@ -44,8 +44,9 @@ namespace AndroidController
             this.label2 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.chkTurnScreen = new System.Windows.Forms.CheckBox();
-            this.chkWake = new System.Windows.Forms.CheckBox();
+            this.chkSkipFrame = new System.Windows.Forms.CheckBox();
             this.chkOpenGL = new System.Windows.Forms.CheckBox();
+            this.chkWake = new System.Windows.Forms.CheckBox();
             this.tblOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numResulution)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFps)).BeginInit();
@@ -60,6 +61,7 @@ namespace AndroidController
             this.btnConnect.TabIndex = 8;
             this.btnConnect.Text = "+";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnRefresh
             // 
@@ -101,11 +103,12 @@ namespace AndroidController
             this.tblOptions.Controls.Add(this.label2);
             this.tblOptions.Controls.Add(this.btnStart);
             this.tblOptions.Controls.Add(this.chkTurnScreen);
+            this.tblOptions.Controls.Add(this.chkSkipFrame);
             this.tblOptions.Controls.Add(this.chkOpenGL);
             this.tblOptions.Controls.Add(this.chkWake);
             this.tblOptions.Location = new System.Drawing.Point(14, 32);
             this.tblOptions.Name = "tblOptions";
-            this.tblOptions.Size = new System.Drawing.Size(322, 183);
+            this.tblOptions.Size = new System.Drawing.Size(322, 206);
             this.tblOptions.TabIndex = 9;
             this.tblOptions.TabStop = false;
             this.tblOptions.Text = "Options";
@@ -207,7 +210,7 @@ namespace AndroidController
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(6, 141);
+            this.btnStart.Location = new System.Drawing.Point(6, 164);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(310, 36);
             this.btnStart.TabIndex = 10;
@@ -225,6 +228,26 @@ namespace AndroidController
             this.chkTurnScreen.Text = "Turn off screen";
             this.chkTurnScreen.UseVisualStyleBackColor = true;
             // 
+            // chkSkipFrame
+            // 
+            this.chkSkipFrame.AutoSize = true;
+            this.chkSkipFrame.Location = new System.Drawing.Point(17, 142);
+            this.chkSkipFrame.Name = "chkSkipFrame";
+            this.chkSkipFrame.Size = new System.Drawing.Size(168, 16);
+            this.chkSkipFrame.TabIndex = 0;
+            this.chkSkipFrame.Text = "Skip frames (reduce lag)";
+            this.chkSkipFrame.UseVisualStyleBackColor = true;
+            // 
+            // chkOpenGL
+            // 
+            this.chkOpenGL.AutoSize = true;
+            this.chkOpenGL.Location = new System.Drawing.Point(17, 123);
+            this.chkOpenGL.Name = "chkOpenGL";
+            this.chkOpenGL.Size = new System.Drawing.Size(240, 16);
+            this.chkOpenGL.TabIndex = 0;
+            this.chkOpenGL.Text = "Use OpenGL (may improve performance)";
+            this.chkOpenGL.UseVisualStyleBackColor = true;
+            // 
             // chkWake
             // 
             this.chkWake.AutoSize = true;
@@ -235,21 +258,12 @@ namespace AndroidController
             this.chkWake.Text = "Keep device wake";
             this.chkWake.UseVisualStyleBackColor = true;
             // 
-            // chkOpenGL
-            // 
-            this.chkOpenGL.AutoSize = true;
-            this.chkOpenGL.Location = new System.Drawing.Point(17, 122);
-            this.chkOpenGL.Name = "chkOpenGL";
-            this.chkOpenGL.Size = new System.Drawing.Size(240, 16);
-            this.chkOpenGL.TabIndex = 0;
-            this.chkOpenGL.Text = "Use OpenGL (may improve performance)";
-            this.chkOpenGL.UseVisualStyleBackColor = true;
-            // 
             // FrmChooseDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 227);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(348, 250);
             this.Controls.Add(this.tblOptions);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRefresh);
@@ -292,5 +306,6 @@ namespace AndroidController
         private System.Windows.Forms.NumericUpDown numResulution;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox chkOpenGL;
+        private System.Windows.Forms.CheckBox chkSkipFrame;
     }
 }
