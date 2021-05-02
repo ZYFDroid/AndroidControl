@@ -16,5 +16,14 @@ namespace AndroidController
         {
             InitializeComponent();
         }
+
+        private void FrmConfig_Load(object sender, EventArgs e)
+        {
+            new FormTranslator(this);
+            lblAuthor.Text = "Made by ZYFDroid";
+            if (!Translator.overTran.ContainsKey("Translator")) {
+                lblLanguage.Text = "Not Translated Language: " + Translator.SystemLanguage;
+            }
+        }
     }
 }

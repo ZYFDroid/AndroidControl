@@ -117,17 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>Win+Alt+←		Rotate Left
-Win+Alt+→		Rotate Right
-Win+Alt+H		Home
-Win+Alt+B		Back
-Win+Alt+S		App Switch
-Win+Alt+M		Menu
-Win+Alt+↑		Volume Up
-Win+Alt+↓		Volume Down
-Win+Alt+P		Power
-Win+Alt+R		Rotate Device
-Win+Alt+n		Notification Panel</value>
-  </data>
 </root>

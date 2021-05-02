@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language name="default">
+  <LanguageName>English</LanguageName>
+  <StartingADB>Starting ADB server...</StartingADB>
+  <ProgressDialog>Please wait...</ProgressDialog>
+  <Cancel>Cancel</Cancel>
+  <Form1>Android Control - Powered by scrcpy, sndcpy, etc.</Form1>
+  <NoDev>No device connected
+Please click [+] button</NoDev>
+  <ExpandHandle>=====</ExpandHandle>
+  <DockLeft>Dock Left</DockLeft>
+  <DockRight>Dock Right</DockRight>
+  <DockClose>Exit dock mode</DockClose>
+  <BtnConnect>Connect/Disconnect</BtnConnect>
+  <BtnSound>Cast Android Sounds</BtnSound>
+  <Settings>Settings</Settings>
+  <BtnMenu>Android Menu Key</BtnMenu>
+  <BtnTask>Android Appswitch Key</BtnTask>
+  <BtnHome>Android Home Key</BtnHome>
+  <BtnBack>Android Back Key</BtnBack>
+  <BtnDock>Dock aside (right click)</BtnDock>
+  <Connecting>Connecting to device... </Connecting>
+  <ConnectFailed>Connection Failed. Press [Cancel] to close.</ConnectFailed>
+  <AudioForward>Audio Forward</AudioForward>
+  <DeviceM>Device:</DeviceM>
+  <Plus>+</Plus>
+  <Refresh>Refresh</Refresh>
+  <Actions>Actions</Actions>
+  <AudioStep1>1. Install if not</AudioStep1>
+  <AudioStep2>2. Start server and
+press [START] on device</AudioStep2>
+  <AudioStep3>1. Install if not</AudioStep3>
+  <StopAudioDesc>Stop audio forwarding</StopAudioDesc>
+  <InstallSoftware>Install Software</InstallSoftware>
+  <StartServer>Start Server</StartServer>
+  <StopAudio>Stop</StopAudio>
+  <AudioWarrenty>* Audio forwarding supports only Android 10 and above</AudioWarrenty>
+  <StartForwarding>Start Forwarding</StartForwarding>
+  <InstallingSoftware>Installing Software...</InstallingSoftware>
+  <StartAudioServer>Starting server on your device...</StartAudioServer>
+  <PressStartHint>Please press [START] on your device</PressStartHint>
+  <StartingAudio>Starting Audio Player... </StartingAudio>
+  <CheckConnection>Checking connection... </CheckConnection>
+  <ConnectFailPressCancel>Connection Failed. Press [Cancel] to close.</ConnectFailPressCancel>
+  <Shortcuts>Win+Alt+←		Rotate Left&#10;&#13;
+Win+Alt+→		Rotate Right&#10;&#13;
+Win+Alt+H		Home&#10;&#13;
+Win+Alt+B		Back&#10;&#13;
+Win+Alt+S		App Switch&#10;&#13;
+Win+Alt+M		Menu&#10;&#13;
+Win+Alt+↑		Volume Up&#10;&#13;
+Win+Alt+↓		Volume Down&#10;&#13;
+Win+Alt+P		Power&#10;&#13;
+Win+Alt+R		Rotate Device&#10;&#13;
+Win+Alt+n		Notification Panel</Shortcuts>
+  <Shortcut>Shortcut:</Shortcut>
+  <HelpAbout>Help and About</HelpAbout>
+  <AppName>Android Control</AppName>
+  <PoweredBy>Powered by
+ - scrcpy
+ - sndcpy
+  </PoweredBy>
+  <Translator>Translator: The Author</Translator>
+  <DeviceList>Device List:</DeviceList>
+  <NewConnect>Connect to new device</NewConnect>
+  <TurnOnDS>* Turn on USB Debug in Developer Settings</TurnOnDS>
+  <No>No</No>
+  <Model>Model</Model>
+  <Device>Device</Device>
+  <Series>Series</Series>
+  <Action>Action</Action>
+  <Status>Status</Status>
+  <ConnectWireless>Connect to wireless Device</ConnectWireless>
+  <IP>IP/Host</IP>
+  <Add>Add</Add>
+  <ChooseDevice>Choose your device</ChooseDevice>
+  <Options>Options</Options>
+  <Bitrate>Bitrate(Mbps):</Bitrate>
+  <MinusOneDefault>-1 for default.</MinusOneDefault>
+  <RecommandBits>Recommand 8Mbps for WLAN or 128Mbps for USB</RecommandBits>
+  <FPS>FPS</FPS>
+  <ScreenHeight>Screen height:</ScreenHeight>
+  <WakeLock>Keep device wake</WakeLock>
+  <OffScreen>Turn off screen</OffScreen>
+  <UseOpenGL>Use OpenGL (may improve performance)</UseOpenGL>
+  <SkipFrame>Skip frames (reduce lag)</SkipFrame>
+  <Start>Start</Start>
+</language>

@@ -19,6 +19,7 @@ namespace AndroidController
 
         private void ProgressDialog_Load(object sender, EventArgs e)
         {
+            new FormTranslator(this);
             backgroundWorker1.RunWorkerAsync();
         }
 

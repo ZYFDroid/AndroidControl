@@ -21,6 +21,7 @@ namespace AndroidController
 
         private void FrmConnectDevice_Load(object sender, EventArgs e)
         {
+            new FormTranslator(this);
             loadData();
         }
 
@@ -80,7 +81,7 @@ namespace AndroidController
                     {
                         ProgressDialog.Schedule(x =>
                         {
-                            x.ReportProgress(0, "Connecting to device...");
+                            x.ReportProgress(0, "Connecting".t());
                             string result = Program.AdbClient.runRawCommand("connect " + din.DeviceSeries, true);
                         }).Run(this);
                         loadData();

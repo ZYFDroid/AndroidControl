@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language name="zh_cn">
+  <LanguageName>简体中文</LanguageName>
+  <StartingADB>正在启动ADB服务...</StartingADB>
+  <ProgressDialog>请耐心等待...</ProgressDialog>
+  <Cancel>取消</Cancel>
+  <Form1>多  屏  协  同  (Scrcpy+Sndcpy)</Form1>
+  <NoDev>点击下方 +
+连接到新设备</NoDev>
+  <ExpandHandle>=====</ExpandHandle>
+  <DockLeft>靠左停靠</DockLeft>
+  <DockRight>靠右停靠</DockRight>
+  <DockClose>退出停靠模式</DockClose>
+  <BtnConnect>连接/断开</BtnConnect>
+  <BtnSound>音频投屏</BtnSound>
+  <Settings>设置</Settings>
+  <BtnMenu>安卓菜单键</BtnMenu>
+  <BtnTask>安卓最近任务键</BtnTask>
+  <BtnDock>左右停靠 (请按右键选择)</BtnDock>
+  <BtnHome>安卓Home键</BtnHome>
+  <BtnBack>安卓返回键</BtnBack>
+  <Connecting>正在连接设备...</Connecting>
+  <ConnectFailPressCancel>连接失败,请按 取消 关闭窗口.</ConnectFailPressCancel>
+  <AudioForward>音频转发</AudioForward>
+  <DeviceM>设备列表:</DeviceM>
+  <Plus>+</Plus>
+  <Refresh>刷新</Refresh>
+  <Actions>操作</Actions>
+  <AudioStep1>第一步:安装软件</AudioStep1>
+  <AudioStep2>第二布:启动软件,然后
+按下手机上的[立即开始]</AudioStep2>
+  <StopAudioDesc>← 停止音频转发</StopAudioDesc>
+  <InstallSoftware>安装软件</InstallSoftware>
+  <StartServer>启动软件</StartServer>
+  <StopAudio>停止</StopAudio>
+  <AudioWarrenty>* 音频转发只支持安卓10及以上</AudioWarrenty>
+  <StartForwarding>开始投屏</StartForwarding>
+  <InstallingSoftware>正在安装软件...</InstallingSoftware>
+  <StartAudioServer>正在启动软件...</StartAudioServer>
+  <PressStartHint>请按下手机上的[立即开始]按钮</PressStartHint>
+  <StartingAudio>启动音频播放组件...</StartingAudio>
+  <CheckConnection>检查播放状态... </CheckConnection>
+  <Shortcuts>Win+Alt+←		逆时针旋转画面&#10;&#13;
+Win+Alt+→		顺时针旋转画面&#10;&#13;
+Win+Alt+H		Home键&#10;&#13;
+Win+Alt+B		返回键&#10;&#13;
+Win+Alt+S		最近任务键&#10;&#13;
+Win+Alt+M		菜单键&#10;&#13;
+Win+Alt+↑		音量加&#10;&#13;
+Win+Alt+↓		音量减&#10;&#13;
+Win+Alt+P		电源键&#10;&#13;
+Win+Alt+R		切换横竖屏&#10;&#13;
+Win+Alt+n		通知面板</Shortcuts>
+  <Shortcut>快捷键:</Shortcut>
+  <HelpAbout>帮助和关于</HelpAbout>
+  <AppName>多  屏  协  同</AppName>
+  <PoweredBy>Powered by
+ - scrcpy
+ - sndcpy</PoweredBy>
+  <Translator>翻译: ZYFDroid</Translator>
+  <DeviceList>设备列表:</DeviceList>
+  <NewConnect>连接到新设备</NewConnect>
+  <TurnOnDS>* 请务必在开发者选项里打开USB调试 (方法自行百度)</TurnOnDS>
+  <No>编号</No>
+  <Model>型号</Model>
+  <Device>设备</Device>
+  <Series>识别码</Series>
+  <Action>操作</Action>
+  <Status>状态</Status>
+  <ConnectWireless>连接到无线ADB设备</ConnectWireless>
+  <IP>IP/主机名</IP>
+  <Add>添加</Add>
+  <ChooseDevice>选择你的设备</ChooseDevice>
+  <Options>选项</Options>
+  <Bitrate>比特率(Mbps):</Bitrate>
+  <MinusOneDefault>-1 代表默认</MinusOneDefault>
+  <RecommandBits>Wifi连接建议8Mbps, USB连接随意</RecommandBits>
+  <FPS>帧率</FPS>
+  <ScreenHeight>屏幕最大高度:</ScreenHeight>
+  <WakeLock>保持不熄屏</WakeLock>
+  <OffScreen>关闭屏幕</OffScreen>
+  <UseOpenGL>使用 OpenGL (可能提高性能)</UseOpenGL>
+  <SkipFrame>跳帧 (减少延迟)</SkipFrame>
+  <Start>开始</Start>
+</language>

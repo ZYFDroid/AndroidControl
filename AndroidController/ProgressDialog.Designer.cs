@@ -46,11 +46,11 @@ namespace AndroidController
             // 
             // lblProgress
             // 
-            this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(12, 24);
+            this.lblProgress.Location = new System.Drawing.Point(7, -1);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(0, 12);
+            this.lblProgress.Size = new System.Drawing.Size(454, 52);
             this.lblProgress.TabIndex = 1;
+            this.lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // backgroundWorker1
             // 
@@ -95,11 +95,10 @@ namespace AndroidController
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Please Wait";
+            this.Text = "ProgressDialog";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProgressDialog_FormClosing);
             this.Load += new System.EventHandler(this.ProgressDialog_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

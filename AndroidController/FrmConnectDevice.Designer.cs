@@ -29,9 +29,10 @@ namespace AndroidController
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tblDeviceList = new System.Windows.Forms.DataGridView();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +47,6 @@ namespace AndroidController
             this.btnLoad = new System.Windows.Forms.Button();
             this.txtIp = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblDeviceList)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -61,7 +61,16 @@ namespace AndroidController
             this.groupBox1.Size = new System.Drawing.Size(528, 349);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Device list";
+            this.groupBox1.Text = "DeviceList";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "TurnOnDS";
             // 
             // tblDeviceList
             // 
@@ -73,14 +82,14 @@ namespace AndroidController
             this.tblDeviceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tblDeviceList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.tblDeviceList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tblDeviceList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tblDeviceList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.tblDeviceList.ColumnHeadersHeight = 30;
             this.tblDeviceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.tblDeviceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -92,14 +101,14 @@ namespace AndroidController
             this.Column7,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tblDeviceList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tblDeviceList.DefaultCellStyle = dataGridViewCellStyle10;
             this.tblDeviceList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.tblDeviceList.EnableHeadersVisualStyles = false;
             this.tblDeviceList.Location = new System.Drawing.Point(6, 33);
@@ -188,7 +197,7 @@ namespace AndroidController
             this.groupBox2.Size = new System.Drawing.Size(528, 51);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Connect to wireless Device";
+            this.groupBox2.Text = "ConnectWireless";
             // 
             // btnConnect
             // 
@@ -222,18 +231,9 @@ namespace AndroidController
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "IP/Host";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(251, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "* Turn on USB Debug in Developer Settings";
+            this.label1.Text = "IP";
             // 
             // FrmConnectDevice
             // 
@@ -249,7 +249,7 @@ namespace AndroidController
             this.Name = "FrmConnectDevice";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Connect to new device";
+            this.Text = "NewConnect";
             this.Load += new System.EventHandler(this.FrmConnectDevice_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

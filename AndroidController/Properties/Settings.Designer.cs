@@ -73,18 +73,6 @@ namespace AndroidController.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        public int SCSndBuffer {
-            get {
-                return ((int)(this["SCSndBuffer"]));
-            }
-            set {
-                this["SCSndBuffer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("28200")]
         public int SCSndPort {
             get {
@@ -176,6 +164,42 @@ namespace AndroidController.Properties {
             }
             set {
                 this["APPWindowY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool APPDockMode {
+            get {
+                return ((bool)(this["APPDockMode"]));
+            }
+            set {
+                this["APPDockMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int APPDockSide {
+            get {
+                return ((int)(this["APPDockSide"]));
+            }
+            set {
+                this["APPDockSide"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool APPDockPin {
+            get {
+                return ((bool)(this["APPDockPin"]));
+            }
+            set {
+                this["APPDockPin"] = value;
             }
         }
     }

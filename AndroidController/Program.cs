@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace AndroidController
 {
@@ -21,9 +22,12 @@ namespace AndroidController
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AdbClient.adbPath = getAdbPath();
+            Translator.init();
+            Translator.chLang(Translator.SystemLanguage);
+            Console.Write("");
             Application.Run(ProgressDialog.Schedule(e =>
             {
-                e.ReportProgress(0, "Starting ADB server...");
+                e.ReportProgress(0, "StartingADB".t());
                 AdbClient.ensureAdbRunning();
                 var a = AdbClient.getDeviceList();
             }));
@@ -60,6 +64,123 @@ namespace AndroidController
                 cmb.ValueMember = "Value";
             }
         }
+        
+
+    
+    }
+
+
+    public static class Translator
+    {
+        public static Dictionary<String, String> baseTran = new Dictionary<string, string>();
+        public static Dictionary<String, String> overTran = new Dictionary<string, string>();
+        public static Dictionary<String, String> langList = new Dictionary<string, string>();
+
+        public static string SystemLanguage {
+            get {
+                return System.Threading.Thread.CurrentThread.CurrentCulture.Name.ToLower().Replace("-", "_");
+            }
+        }
+
+        public static void init()
+        {
+            Directory.EnumerateFiles("languages", "*.xml").ToList().ForEach(f => {
+                try
+                {
+                    loadLang(f, baseTran);
+                    langList.Add(XDocument.Load(f).Root.Attribute("name").Value, f);
+                }
+                catch { }
+            });
+            loadLang(langList["default"], baseTran);
+        }
+
+        public static void chLang(String langName)
+        {
+            if (langList.ContainsKey(langName))
+            {
+                loadLang(langList[langName], overTran);
+            }
+        }
+
+        public static void loadLang(String fn, Dictionary<String, String> dict)
+        {
+            dict.Clear();
+            XDocument.Load(fn).Root.Elements().ToList().ForEach(el => {
+                dict.Remove(el.Name.LocalName);
+                dict.Add(el.Name.LocalName, el.Value);
+            });
+        }
+
+        public static String t(this String s)
+        {
+            if (s == null || s == "") { return s; }
+            if (overTran.ContainsKey(s)) { return overTran[s]; }
+            if (baseTran.ContainsKey(s)) { return baseTran[s]; }
+            return "?" + s + "<";
+        }
+    }
+
+    public class FormTranslator {
+        Form form;
+
+        public FormTranslator(Form form)
+        {
+            this.form = form;
+            doScan(form);
+            TranslateAll();
+        }
+
+
+        public void doScan(Control ctl)
+        {
+            if (ctl is NumericUpDown || ctl is ComboBox || ctl is DateTimePicker)
+            {
+                return;
+            }
+            if (ctl is TextBox) {
+                TextBox t = ctl as TextBox;
+                if (t.ReadOnly) {
+                    t.ReadOnly = false;
+                    t.Text = t.Text.t();
+                    t.ReadOnly = true;
+                }
+                return;
+            }
+            if (ctl is DataGridView)
+            {
+                foreach (DataGridViewColumn col in (ctl as DataGridView).Columns)
+                {
+                    tranObjs.Add(new TransObj(col, "HeaderText"));
+                }
+                return;
+            }
+            tranObjs.Add(new TransObj(ctl, "Text"));
+            foreach (Control c in ctl.Controls)
+            {
+                doScan(c);
+            }
+        }
+        public void TranslateAll() => tranObjs.ForEach(s => s.Translate());
+        List<TransObj> tranObjs = new List<TransObj>();
+        public class TransObj
+        {
+            String key;
+            object obj;
+            String prop;
+
+            public TransObj(object obj, string prop)
+            {
+                this.obj = obj;
+                this.prop = prop;
+                key = obj.GetType().GetProperty(prop).GetValue(obj).ToString();
+            }
+            public void Translate()
+            {
+                obj.GetType().GetProperty(prop).SetValue(obj, key.t());
+            }
+        }
+
     }
 
     public class AdbClient {

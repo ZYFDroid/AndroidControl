@@ -14,9 +14,6 @@
     <Setting Name="SCKeepWake" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="SCSndBuffer" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">50</Value>
-    </Setting>
     <Setting Name="SCSndPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">28200</Value>
     </Setting>
@@ -40,6 +37,15 @@
     </Setting>
     <Setting Name="APPWindowY" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="APPDockMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="APPDockSide" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="APPDockPin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

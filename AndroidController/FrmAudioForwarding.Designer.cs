@@ -32,8 +32,6 @@ namespace AndroidController
             this.cmbDevice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panFunctions = new System.Windows.Forms.GroupBox();
-            this.numBufferSize = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,16 +43,15 @@ namespace AndroidController
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.panFunctions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numBufferSize)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbDevice
             // 
             this.cmbDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDevice.FormattingEnabled = true;
-            this.cmbDevice.Location = new System.Drawing.Point(65, 12);
+            this.cmbDevice.Location = new System.Drawing.Point(79, 12);
             this.cmbDevice.Name = "cmbDevice";
-            this.cmbDevice.Size = new System.Drawing.Size(188, 20);
+            this.cmbDevice.Size = new System.Drawing.Size(174, 20);
             this.cmbDevice.TabIndex = 0;
             // 
             // label1
@@ -64,12 +61,10 @@ namespace AndroidController
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Device:";
+            this.label1.Text = "DeviceM";
             // 
             // panFunctions
             // 
-            this.panFunctions.Controls.Add(this.numBufferSize);
-            this.panFunctions.Controls.Add(this.label6);
             this.panFunctions.Controls.Add(this.label3);
             this.panFunctions.Controls.Add(this.label4);
             this.panFunctions.Controls.Add(this.label5);
@@ -80,63 +75,36 @@ namespace AndroidController
             this.panFunctions.Controls.Add(this.btnForwarding);
             this.panFunctions.Location = new System.Drawing.Point(14, 38);
             this.panFunctions.Name = "panFunctions";
-            this.panFunctions.Size = new System.Drawing.Size(324, 231);
+            this.panFunctions.Size = new System.Drawing.Size(324, 214);
             this.panFunctions.TabIndex = 2;
             this.panFunctions.TabStop = false;
             this.panFunctions.Text = "Actions";
-            // 
-            // numBufferSize
-            // 
-            this.numBufferSize.Location = new System.Drawing.Point(89, 124);
-            this.numBufferSize.Maximum = new decimal(new int[] {
-            128,
-            0,
-            0,
-            0});
-            this.numBufferSize.Name = "numBufferSize";
-            this.numBufferSize.Size = new System.Drawing.Size(229, 21);
-            this.numBufferSize.TabIndex = 7;
-            this.numBufferSize.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numBufferSize.ValueChanged += new System.EventHandler(this.numBufferSize_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 127);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 12);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Buffer Size:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(151, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 24);
+            this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 5;
-            this.label3.Text = "2. Start server and\r\npress [START] on device";
+            this.label3.Text = "AudioStep2";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(151, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 12);
+            this.label4.Size = new System.Drawing.Size(83, 12);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Stop audio forwarding";
+            this.label4.Text = "StopAudioDesc";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(6, 147);
+            this.label5.Location = new System.Drawing.Point(6, 122);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(312, 29);
             this.label5.TabIndex = 5;
-            this.label5.Text = "* Audio forwarding supports only Android 10 and above";
+            this.label5.Text = "AudioWarrenty";
             this.label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label2
@@ -144,9 +112,9 @@ namespace AndroidController
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(151, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 12);
+            this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 5;
-            this.label2.Text = "1. Install if not";
+            this.label2.Text = "AudioStep1";
             // 
             // btnServer
             // 
@@ -154,7 +122,7 @@ namespace AndroidController
             this.btnServer.Name = "btnServer";
             this.btnServer.Size = new System.Drawing.Size(139, 29);
             this.btnServer.TabIndex = 4;
-            this.btnServer.Text = "Start Server";
+            this.btnServer.Text = "StartServer";
             this.btnServer.UseVisualStyleBackColor = true;
             this.btnServer.Click += new System.EventHandler(this.btnServer_Click);
             // 
@@ -164,7 +132,7 @@ namespace AndroidController
             this.btnInstall.Name = "btnInstall";
             this.btnInstall.Size = new System.Drawing.Size(139, 29);
             this.btnInstall.TabIndex = 4;
-            this.btnInstall.Text = "Install Software";
+            this.btnInstall.Text = "InstallSoftware";
             this.btnInstall.UseVisualStyleBackColor = true;
             this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
             // 
@@ -174,17 +142,17 @@ namespace AndroidController
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(139, 28);
             this.btnStop.TabIndex = 3;
-            this.btnStop.Text = "Stop";
+            this.btnStop.Text = "StopAudio";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnForwarding
             // 
-            this.btnForwarding.Location = new System.Drawing.Point(6, 180);
+            this.btnForwarding.Location = new System.Drawing.Point(6, 160);
             this.btnForwarding.Name = "btnForwarding";
             this.btnForwarding.Size = new System.Drawing.Size(312, 45);
             this.btnForwarding.TabIndex = 3;
-            this.btnForwarding.Text = "Start Forwarding";
+            this.btnForwarding.Text = "StartForwarding";
             this.btnForwarding.UseVisualStyleBackColor = true;
             this.btnForwarding.Click += new System.EventHandler(this.btnForwarding_Click);
             // 
@@ -204,7 +172,7 @@ namespace AndroidController
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(17, 20);
             this.btnConnect.TabIndex = 4;
-            this.btnConnect.Text = "+";
+            this.btnConnect.Text = "Plus";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
@@ -213,7 +181,7 @@ namespace AndroidController
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(350, 281);
+            this.ClientSize = new System.Drawing.Size(350, 262);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.panFunctions);
@@ -225,11 +193,10 @@ namespace AndroidController
             this.Name = "FrmAudioForwarding";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Audio Forward";
+            this.Text = "AudioForward";
             this.Load += new System.EventHandler(this.FrmAudioForwarding_Load);
             this.panFunctions.ResumeLayout(false);
             this.panFunctions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numBufferSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +217,5 @@ namespace AndroidController
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.NumericUpDown numBufferSize;
-        private System.Windows.Forms.Label label6;
     }
 }

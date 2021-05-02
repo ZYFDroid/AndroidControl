@@ -55,6 +55,7 @@ namespace AndroidController
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            new FormTranslator(this);
             this.Width = Program.Settings.APPWindowWidth;
             this.Height = Program.Settings.APPWindowHeight;
             this.Top = Program.Settings.APPWindowY;
@@ -63,8 +64,19 @@ namespace AndroidController
             Program.Settings.APPWindowX=0;
             Program.Settings.Save();
             this.Icon = Properties.Resources.phone;
+            initTooltip();
         }
 
+        void initTooltip() {
+            this.toolTip1.SetToolTip(this.btnConnect, "BtnConnect".t());
+            this.toolTip1.SetToolTip(this.btnSound, "BtnSound".t());
+            this.toolTip1.SetToolTip(this.btnSetting, "Settings".t());
+            this.toolTip1.SetToolTip(this.btnMenu, "BtnMenu".t());
+            this.toolTip1.SetToolTip(this.btnTask, "BtnTask".t());
+            this.toolTip1.SetToolTip(this.btnHome, "BtnHome".t());
+            this.toolTip1.SetToolTip(this.btnBack, "BtnBack".t());
+            this.toolTip1.SetToolTip(this.btnDock, "BtnDock".t());
+        }
         private void btnColPanel_Click(object sender, EventArgs e)
         {
             if (panBottom.Height == btnColPanel.Height)
@@ -139,7 +151,7 @@ namespace AndroidController
         public void startScrcpy(string deviceseries) {
             ProgressDialog.Schedule(x =>
             {
-                x.ReportProgress(0, "Connecting to device... ");
+                x.ReportProgress(0, "Connecting".t());
                 ProcessStartInfo psi = new ProcessStartInfo("scrcpy.exe", DefaultScrcpyArgs + "--serial " + deviceseries);
                 psi.RedirectStandardError = true;
                 psi.RedirectStandardOutput = true;
@@ -158,7 +170,7 @@ namespace AndroidController
                     Thread.Sleep(100);
                     if (prcScrcpy.HasExited)
                     {
-                        x.ReportProgress(100, "Connection Failed. Press [Cancel] to close.");
+                        x.ReportProgress(100, "ConnectFailedPressCancel".t());
                         while (!x.CancellationPending)
                         {
                             System.Threading.Thread.Sleep(100);

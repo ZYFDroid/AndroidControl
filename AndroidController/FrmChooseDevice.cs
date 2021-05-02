@@ -28,6 +28,7 @@ namespace AndroidController
 
         private void FrmChooseDevice_Load(object sender, EventArgs e)
         {
+            new FormTranslator(this);
             btnRefresh.PerformClick();
             numBitrate.Value = Program.Settings.SCMbps;
             numResulution.Value = Program.Settings.SCResolution;

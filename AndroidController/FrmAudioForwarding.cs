@@ -20,6 +20,7 @@ namespace AndroidController
 
         private void FrmAudioForwarding_Load(object sender, EventArgs e)
         {
+            new FormTranslator(this);
             btnRefresh.PerformClick();
 
         }
@@ -35,7 +36,7 @@ namespace AndroidController
             DeviceInfo dev = cmbDevice.SelectedValue as DeviceInfo;
             ProgressDialog.Schedule(x =>
             {
-                x.ReportProgress(0,"Installing Software");
+                x.ReportProgress(0,"InstallingSoftware".t());
                 Program.AdbClient.runDeviceCommand(dev, "install -g -r sndcpy.apk");
             }).Run(this);
         }
@@ -45,11 +46,11 @@ namespace AndroidController
             DeviceInfo dev = cmbDevice.SelectedValue as DeviceInfo;
             ProgressDialog.Schedule(x =>
             {
-                x.ReportProgress(0, "Starting server on your device...");
+                x.ReportProgress(0, "StartAudioServer".t());
                 Program.AdbClient.runDeviceCommand(dev, "shell am force-stop com.rom1v.sndcpy");
                 Program.AdbClient.runDeviceCommand(dev, "shell am start com.rom1v.sndcpy/.MainActivity");
-                x.ReportProgress(0,"Please press [START] on your device");
-                System.Threading.Thread.Sleep(1666);
+                x.ReportProgress(0,"PressStartHint".t());
+                System.Threading.Thread.Sleep(667);
             }).Run(this);
         }
 
@@ -57,7 +58,7 @@ namespace AndroidController
         {
             ProgressDialog.Schedule(x =>
             {
-                Process.GetProcessesByName("vlc_sndcpy").ToList().ForEach(f => {
+                Process.GetProcessesByName("sndcpy_audioreceiver").ToList().ForEach(f => {
                     try
                     {
                         f.Kill();
@@ -74,7 +75,7 @@ namespace AndroidController
             DeviceInfo dev = cmbDevice.SelectedValue as DeviceInfo;
             ProgressDialog.Schedule(x =>
             {
-                Process.GetProcessesByName("vlc_sndcpy").ToList().ForEach(f => {
+                Process.GetProcessesByName("sndcpy_audioreceiver").ToList().ForEach(f => {
                     try
                     {
                         f.Kill();
@@ -84,38 +85,63 @@ namespace AndroidController
                         Console.WriteLine(ex.ToString());
                     }
                 });
-                x.ReportProgress(0, "Connecting to device... ");
+                x.ReportProgress(0, "Connecting".t());
                 Program.AdbClient.runDeviceCommand(dev, $"forward tcp:{Program.Settings.SCSndPort} localabstract:sndcpy");
                 System.Threading.Thread.Sleep(1000);
-                ProcessStartInfo psi = new ProcessStartInfo("vlc_sndcpy.exe", $" -Idummy --demux rawaud --network-caching={Program.Settings.SCSndBuffer} --play-and-exit tcp://localhost:{Program.Settings.SCSndPort}");
+                ProcessStartInfo psi = new ProcessStartInfo("sndcpy_audioreceiver.exe");
                 psi.UseShellExecute = false;
+                psi.RedirectStandardOutput = true;
                 psi.CreateNoWindow = true;
-                x.ReportProgress(0, "Starting VLC player... ");
+                x.ReportProgress(0, "StartingAudio".t());
                 Process ps = Process.Start(psi);
+                ps.BeginOutputReadLine();
+
+                bool success = false;
+                bool fail = false;
+                DataReceivedEventHandler d = new DataReceivedEventHandler((a, b) =>
+                {
+                    if (b.Data.Contains("ERR") || b.Data.Contains("STOPPED"))
+                    {
+                        fail = true;
+                    }
+                    if (b.Data.Contains("SUCCESS"))
+                    {
+                        success = true;
+                    }
+                });
+                ps.OutputDataReceived += d;
                 System.Threading.Thread.Sleep(1000);
+
+
                 for (int i = 1; i <= 8; i++)
                 {
-                    x.ReportProgress(0, "Checking connectivity... "+i);
+                    x.ReportProgress(0, "CheckConnection".t()+i);
                     System.Threading.Thread.Sleep(1000);
-                    if (ps.HasExited) {
-                        x.ReportProgress(100, "Connection Failed. Press [Cancel] to close.");
+                    if (ps.HasExited || fail)
+                    {
+                        x.ReportProgress(100, "ConnectFailPressCancel".t());
                         while (!x.CancellationPending)
                         {
                             System.Threading.Thread.Sleep(100);
                         }
+                        ps.OutputDataReceived -= d;
                         return;
                     }
+                    else {
+                        if (success) {
+
+                            ps.OutputDataReceived -= d;
+                            return;
+                        }
+                    }
                     if (x.CancellationPending) {
+
+                        ps.OutputDataReceived -= d;
                         return;
                     }
                 }
 
             }).Run(this);
-        }
-
-        private void numBufferSize_ValueChanged(object sender, EventArgs e)
-        {
-            Program.Settings.SCSndBuffer = (int)numBufferSize.Value;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)

@@ -228,7 +228,16 @@
     <None Include="Resources\connect.png" />
     <None Include="Resources\remove.png" />
     <None Include="Resources\phone 1.png" />
-    <Content Include="tools\vlc_sndcpy.exe">
+    <None Include="Resources\unpin.png" />
+    <None Include="Resources\pin.png" />
+    <None Include="Resources\dock.png" />
+    <Content Include="tools\languages\default.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\languages\zh_cn.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\sndcpy_audioreceiver.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="tools\adb.exe">

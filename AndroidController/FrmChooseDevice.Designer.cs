@@ -59,7 +59,7 @@ namespace AndroidController
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(17, 20);
             this.btnConnect.TabIndex = 8;
-            this.btnConnect.Text = "+";
+            this.btnConnect.Text = "Plus";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
@@ -80,15 +80,15 @@ namespace AndroidController
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Device:";
+            this.label1.Text = "DeviceM";
             // 
             // cmbDevice
             // 
             this.cmbDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDevice.FormattingEnabled = true;
-            this.cmbDevice.Location = new System.Drawing.Point(65, 6);
+            this.cmbDevice.Location = new System.Drawing.Point(76, 6);
             this.cmbDevice.Name = "cmbDevice";
-            this.cmbDevice.Size = new System.Drawing.Size(188, 20);
+            this.cmbDevice.Size = new System.Drawing.Size(177, 20);
             this.cmbDevice.TabIndex = 5;
             // 
             // tblOptions
@@ -120,7 +120,7 @@ namespace AndroidController
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 12);
             this.label6.TabIndex = 14;
-            this.label6.Text = "-1 for default.";
+            this.label6.Text = "MinusOneDefault";
             // 
             // numResulution
             // 
@@ -162,7 +162,7 @@ namespace AndroidController
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(310, 21);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Recommand 8Mbps for WLAN or 128Mbps for USB";
+            this.label3.Text = "RecommandBits";
             // 
             // numBitrate
             // 
@@ -184,11 +184,11 @@ namespace AndroidController
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(144, 76);
+            this.label7.Location = new System.Drawing.Point(140, 76);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 12);
             this.label7.TabIndex = 11;
-            this.label7.Text = "Screen width";
+            this.label7.Text = "ScreenHeight";
             // 
             // label4
             // 
@@ -204,9 +204,9 @@ namespace AndroidController
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(15, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 12);
+            this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Bitrate(Mbps):";
+            this.label2.Text = "Bitrate";
             // 
             // btnStart
             // 
@@ -223,9 +223,9 @@ namespace AndroidController
             this.chkTurnScreen.AutoSize = true;
             this.chkTurnScreen.Location = new System.Drawing.Point(161, 104);
             this.chkTurnScreen.Name = "chkTurnScreen";
-            this.chkTurnScreen.Size = new System.Drawing.Size(114, 16);
+            this.chkTurnScreen.Size = new System.Drawing.Size(78, 16);
             this.chkTurnScreen.TabIndex = 0;
-            this.chkTurnScreen.Text = "Turn off screen";
+            this.chkTurnScreen.Text = "OffScreen";
             this.chkTurnScreen.UseVisualStyleBackColor = true;
             // 
             // chkSkipFrame
@@ -233,9 +233,9 @@ namespace AndroidController
             this.chkSkipFrame.AutoSize = true;
             this.chkSkipFrame.Location = new System.Drawing.Point(17, 142);
             this.chkSkipFrame.Name = "chkSkipFrame";
-            this.chkSkipFrame.Size = new System.Drawing.Size(168, 16);
+            this.chkSkipFrame.Size = new System.Drawing.Size(78, 16);
             this.chkSkipFrame.TabIndex = 0;
-            this.chkSkipFrame.Text = "Skip frames (reduce lag)";
+            this.chkSkipFrame.Text = "SkipFrame";
             this.chkSkipFrame.UseVisualStyleBackColor = true;
             // 
             // chkOpenGL
@@ -243,9 +243,9 @@ namespace AndroidController
             this.chkOpenGL.AutoSize = true;
             this.chkOpenGL.Location = new System.Drawing.Point(17, 123);
             this.chkOpenGL.Name = "chkOpenGL";
-            this.chkOpenGL.Size = new System.Drawing.Size(240, 16);
+            this.chkOpenGL.Size = new System.Drawing.Size(78, 16);
             this.chkOpenGL.TabIndex = 0;
-            this.chkOpenGL.Text = "Use OpenGL (may improve performance)";
+            this.chkOpenGL.Text = "UseOpenGL";
             this.chkOpenGL.UseVisualStyleBackColor = true;
             // 
             // chkWake
@@ -253,9 +253,9 @@ namespace AndroidController
             this.chkWake.AutoSize = true;
             this.chkWake.Location = new System.Drawing.Point(17, 104);
             this.chkWake.Name = "chkWake";
-            this.chkWake.Size = new System.Drawing.Size(120, 16);
+            this.chkWake.Size = new System.Drawing.Size(72, 16);
             this.chkWake.TabIndex = 0;
-            this.chkWake.Text = "Keep device wake";
+            this.chkWake.Text = "WakeLock";
             this.chkWake.UseVisualStyleBackColor = true;
             // 
             // FrmChooseDevice
@@ -275,7 +275,7 @@ namespace AndroidController
             this.Name = "FrmChooseDevice";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Choose your device";
+            this.Text = "ChooseDevice";
             this.Load += new System.EventHandler(this.FrmChooseDevice_Load);
             this.tblOptions.ResumeLayout(false);
             this.tblOptions.PerformLayout();
