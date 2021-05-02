@@ -50,6 +50,9 @@ namespace AndroidController
             this.dockRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDockOff = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitDockModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dockTimer = new System.Windows.Forms.Timer(this.components);
+            this.dockAnimTimer = new System.Windows.Forms.Timer(this.components);
+            this.chkPin = new System.Windows.Forms.ToolStripMenuItem();
             this.panBottom.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panMain.SuspendLayout();
@@ -110,6 +113,7 @@ namespace AndroidController
             this.btnDock.Size = new System.Drawing.Size(45, 42);
             this.btnDock.TabIndex = 7;
             this.btnDock.UseVisualStyleBackColor = true;
+            this.btnDock.Click += new System.EventHandler(this.btnDock_Click);
             // 
             // btnConnect
             // 
@@ -288,27 +292,48 @@ namespace AndroidController
             // dockLeftToolStripMenuItem
             // 
             this.dockLeftToolStripMenuItem.Name = "dockLeftToolStripMenuItem";
-            this.dockLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dockLeftToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.dockLeftToolStripMenuItem.Text = "DockLeft";
+            this.dockLeftToolStripMenuItem.Click += new System.EventHandler(this.dockLeftToolStripMenuItem_Click);
             // 
             // dockRightToolStripMenuItem
             // 
             this.dockRightToolStripMenuItem.Name = "dockRightToolStripMenuItem";
-            this.dockRightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dockRightToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.dockRightToolStripMenuItem.Text = "DockRight";
+            this.dockRightToolStripMenuItem.Click += new System.EventHandler(this.dockRightToolStripMenuItem_Click);
             // 
             // mnuDockOff
             // 
             this.mnuDockOff.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chkPin,
             this.exitDockModeToolStripMenuItem});
             this.mnuDockOff.Name = "mnuDockOff";
-            this.mnuDockOff.Size = new System.Drawing.Size(181, 48);
+            this.mnuDockOff.Size = new System.Drawing.Size(181, 70);
             // 
             // exitDockModeToolStripMenuItem
             // 
             this.exitDockModeToolStripMenuItem.Name = "exitDockModeToolStripMenuItem";
             this.exitDockModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitDockModeToolStripMenuItem.Text = "DockClose";
+            this.exitDockModeToolStripMenuItem.Click += new System.EventHandler(this.exitDockModeToolStripMenuItem_Click);
+            // 
+            // dockTimer
+            // 
+            this.dockTimer.Interval = 333;
+            this.dockTimer.Tick += new System.EventHandler(this.dockTimer_Tick);
+            // 
+            // dockAnimTimer
+            // 
+            this.dockAnimTimer.Interval = 1;
+            this.dockAnimTimer.Tick += new System.EventHandler(this.dockAnimTimer_Tick);
+            // 
+            // chkPin
+            // 
+            this.chkPin.CheckOnClick = true;
+            this.chkPin.Name = "chkPin";
+            this.chkPin.Size = new System.Drawing.Size(180, 22);
+            this.chkPin.Text = "Pin";
             // 
             // Form1
             // 
@@ -324,6 +349,7 @@ namespace AndroidController
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             this.panBottom.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panMain.ResumeLayout(false);
@@ -355,6 +381,9 @@ namespace AndroidController
         private System.Windows.Forms.ToolStripMenuItem dockRightToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip mnuDockOff;
         private System.Windows.Forms.ToolStripMenuItem exitDockModeToolStripMenuItem;
+        private System.Windows.Forms.Timer dockTimer;
+        private System.Windows.Forms.Timer dockAnimTimer;
+        private System.Windows.Forms.ToolStripMenuItem chkPin;
     }
 }
 

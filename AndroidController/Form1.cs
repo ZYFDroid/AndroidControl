@@ -39,6 +39,8 @@ namespace AndroidController
         public const int WS_CLIPCHILDREN = 0x2000000;
         private const int GWL_EXSTYLE = -20;
         private const int WS_EX_CONTROLPARENT = 0x10000;
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
 
         [DllImport("user32.dll")]
         public static extern int SetForegroundWindow(IntPtr hwnd);
@@ -53,6 +55,7 @@ namespace AndroidController
             InitializeComponent();
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
             new FormTranslator(this);
@@ -60,6 +63,9 @@ namespace AndroidController
             this.Height = Program.Settings.APPWindowHeight;
             this.Top = Program.Settings.APPWindowY;
             this.Left = Program.Settings.APPWindowX;
+
+            this.isDockLeft = Program.Settings.APPDockSide;
+            this.DockEnabled = Program.Settings.APPDockMode;
             Program.Settings.APPWindowY=0;
             Program.Settings.APPWindowX=0;
             Program.Settings.Save();
@@ -280,6 +286,8 @@ namespace AndroidController
              Program.Settings.APPWindowHeight= this.Height ;
              Program.Settings.APPWindowX= this.Left;
              Program.Settings.APPWindowY= this.Top;
+            Program.Settings.APPDockSide= this.isDockLeft ;
+            Program.Settings.APPDockMode=this.DockEnabled ;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -296,6 +304,148 @@ namespace AndroidController
         private void btnSetting_Click(object sender, EventArgs e)
         {
             showInCenter(new FrmConfig());
+        }
+
+
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            if (DockEnabled)
+            {
+                beginDock();
+            }
+        }
+
+
+        private bool isDock;
+        private bool isDockLeft;
+        bool DockEnabled
+        {
+            get { return isDock; }
+            set { 
+                isDock = value; dockTimer.Enabled = value; 
+                if (value) 
+                {
+                    beginDock();
+                    btnDock.ContextMenuStrip = mnuDockOff;
+                } else {
+                    btnDock.ContextMenuStrip = mnuDockOn;
+                    this.TopMost = false;
+                } 
+            }
+        }
+
+        int dockOnX = 0;
+        int dockOffX = 0;
+
+        void beginDock()
+        {
+            int unnecessaryBound = (this.Width - this.ClientSize.Width) /2;
+
+            this.Height = Screen.FromPoint(MousePosition).WorkingArea.Height+unnecessaryBound-1;
+            if (isDockLeft)
+            {
+                dockOffX = -this.Width;
+                dockOnX = -unnecessaryBound+1;
+            }
+            else
+            {
+                dockOffX = Screen.FromPoint(MousePosition).Bounds.Width;
+                dockOnX = Screen.FromPoint(MousePosition).Bounds.Width - this.Width+unnecessaryBound-1;
+            }
+            this.Left = dockOnX;
+            this.Top = 0;
+            dockOpen = true;
+        }
+
+        int dockCountDown = 2;
+        int gcCountdown = 64;
+        bool dockOpen = true;
+        private void dockTimer_Tick(object sender, EventArgs e)
+        {
+            if (dockOpen)
+            {
+                if (chkPin.Checked || new Rectangle(this.Location, this.Size).Contains(MousePosition) || GetForegroundWindow() == this.Handle || GetForegroundWindow() == hwndScrcpy)
+                {
+                    dockCountDown = 2;
+                    TopMost = true;
+                }
+                else
+                {
+                    dockCountDown--;
+                    if (dockCountDown < 0)
+                    {
+                        dockOpen = false;
+                        dockCountDown = 2;
+                        TopMost = true;
+                        animCountdown = 20;
+                        dockAnimTimer.Enabled = true;
+                    }
+                }
+            }
+            else {
+                bool trigged = false;
+                if (isDockLeft && MousePosition.X == 0) { trigged = true; }
+                if (!isDockLeft && MousePosition.X == Screen.FromPoint(MousePosition).Bounds.Width-1) { trigged = true; }
+                if (chkPin.Checked || trigged || GetForegroundWindow()==this.Handle || GetForegroundWindow()==hwndScrcpy)
+                {
+                    dockCountDown--;
+                    if (dockCountDown < 0)
+                    {
+                        dockOpen = true;
+                        dockCountDown = 2;
+                        TopMost = true;
+                        animCountdown = 20;
+                        dockAnimTimer.Enabled = true;
+                    }
+                }
+                else {
+                    dockCountDown = 1;
+                }
+            }
+
+            gcCountdown--;
+            if (gcCountdown < 0)
+            {
+                gcCountdown = 64;
+                GC.Collect();
+            }
+        }
+
+        int animCountdown = 20;
+        private void dockAnimTimer_Tick(object sender, EventArgs e)
+        {
+            int target = dockOpen ? dockOnX : dockOffX;
+
+            this.Left += (int)(Math.Ceiling((target - this.Left) * 0.3d));
+            animCountdown--;
+            if (animCountdown < 0) {
+                dockAnimTimer.Enabled = false;
+                this.Left = target;
+            }
+
+        }
+
+        private void dockLeftToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isDockLeft = true;
+            DockEnabled = true;
+        }
+
+        private void dockRightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isDockLeft = false;
+            DockEnabled = true;
+        }
+
+        private void exitDockModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DockEnabled = false;
+        }
+
+        private void btnDock_Click(object sender, EventArgs e)
+        {
+            btnDock.ContextMenuStrip.Show(MousePosition);
         }
     }
 }

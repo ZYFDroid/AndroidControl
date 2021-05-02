@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -128,9 +129,27 @@ namespace AndroidController
         {
             this.form = form;
             doScan(form);
+            doScan2(form);
             TranslateAll();
         }
 
+        public void doScan2(Form frm) {
+            frm.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(f => f.GetValue(frm) is ToolStrip ).Select(f => (ToolStrip)f.GetValue(frm)).ToList().ForEach(f =>
+            {
+                foreach (ToolStripMenuItem item in f.Items)
+                {
+                    doScan3(item);
+                }
+            });
+        }
+
+        public void doScan3(ToolStripMenuItem tsmi) {
+            tranObjs.Add(new TransObj(tsmi, "Text"));
+            foreach (ToolStripMenuItem item in tsmi.DropDownItems)
+            {
+                doScan3(item);
+            }
+        }
 
         public void doScan(Control ctl)
         {

@@ -10,6 +10,7 @@ Please click [+] button</NoDev>
   <ExpandHandle>=====</ExpandHandle>
   <DockLeft>Dock Left</DockLeft>
   <DockRight>Dock Right</DockRight>
+  <Pin>Pin</Pin>
   <DockClose>Exit dock mode</DockClose>
   <BtnConnect>Connect/Disconnect</BtnConnect>
   <BtnSound>Cast Android Sounds</BtnSound>

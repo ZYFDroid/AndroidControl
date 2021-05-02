@@ -181,10 +181,10 @@ namespace AndroidController.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int APPDockSide {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool APPDockSide {
             get {
-                return ((int)(this["APPDockSide"]));
+                return ((bool)(this["APPDockSide"]));
             }
             set {
                 this["APPDockSide"] = value;

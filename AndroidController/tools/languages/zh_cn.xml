@@ -10,6 +10,7 @@
   <ExpandHandle>=====</ExpandHandle>
   <DockLeft>靠左停靠</DockLeft>
   <DockRight>靠右停靠</DockRight>
+  <Pin>保持展开状态</Pin>
   <DockClose>退出停靠模式</DockClose>
   <BtnConnect>连接/断开</BtnConnect>
   <BtnSound>音频投屏</BtnSound>
