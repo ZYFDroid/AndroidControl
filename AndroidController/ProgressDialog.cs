@@ -33,6 +33,17 @@ namespace AndroidController
             return ShowDialog(parent)==DialogResult.OK;
         }
 
+        public void RunAsync(Control parent) {
+            if (parent != null)
+            {
+                this.StartPosition = FormStartPosition.Manual;
+                this.Top = parent.Top + parent.Height / 2 - this.Height / 2;
+                this.Left = parent.Left + parent.Width / 2 - this.Width / 2;
+            }
+            Show(parent);
+        }
+
+
         Action<BackgroundWorker> action;
 
 
